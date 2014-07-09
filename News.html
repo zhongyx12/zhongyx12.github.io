@@ -1,0 +1,84 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Football News</title>
+    <script type="text/javascript" src="jquery-1.11.1.js"></script>
+    <style type="text/css">
+        body
+        {
+            background-image: url("bg.jpg");
+            background-attachment: fixed;
+        }
+        #ShowBoard
+        {
+            width: 1200px;
+            height: 800px;
+            margin: 0 auto;
+            margin-top: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+        #ShowBoard ul
+        {
+            list-style-type: none;
+        }
+        #ShowBoard ul li div
+        {
+            margin: 0 auto;
+            width: 100%;
+            text-align:center;
+			display: block;
+			position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <input type="button" value = "Change" onclick = "produceImg()"/>
+    <div id = "ShowBoard">
+        <ul id = "Board">
+            <!-- <li style = "display : list-item; opacity: 0.5;" >
+                <div><img src="http://y2.ifengimg.com/b068cbc6f4474981/2014/0709/rdn_53bc723155437.jpg"/></div>
+            </li>
+            <li style = "display : none; opacity: 0.8;">
+                <div><img src="http://y3.ifengimg.com/b068cbc6f4474981/2014/0709/rdn_53bc70fbcdae9.jpg"/></div>
+            </li> -->
+        </ul>
+    </div>
+</body>
+<script type="text/javascript">
+    var url = "NewsImg.json"
+
+    function processData(obj)
+    {
+        var i;
+        for (i = 0; i < obj.num; i++)
+        {
+            $("#Board").append('<li style = "display : list-item;" ><div><img /></div></li>');
+            $("#Board").children().eq(i).children().children().attr("src", obj.link[i]);
+        }
+    }
+
+    function handler() {
+        if (this.readyState == this.DONE) {
+            if (this.status == 200) {
+                try {
+                    processData(JSON.parse(this.responseText));
+                } catch (ex) {
+                    console.log(ex.message);
+                }
+            }
+        }
+    }
+
+    function produceImg()
+    {
+        var client = new XMLHttpRequest();
+        client.onreadystatechange = handler;
+        client.open('GET', url);
+        client.send();
+    }
+</script>
+
+</html>
