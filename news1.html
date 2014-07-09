@@ -1,0 +1,54 @@
+<html>
+<head>
+<script type="text/javascript">
+var xmlHttp;
+function createXMLHttpRequest()
+{
+    if(window.ActiveXObject)
+    {
+        xmlHttp = new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    else if(window.XMLHttpRequest)
+    {
+        xmlHttp = new XMLHttpRequest();
+    }
+}
+function startRequest()
+{
+    createXMLHttpRequest();
+    try
+    {
+        xmlHttp.onreadystatechange = handleStateChange;
+        xmlHttp.open("GET", "news.json", true);
+        xmlHttp.send(null);
+		alert("send");
+    }
+    catch(exception)
+    {
+        alert("xmlHttp Fail");
+    }
+}
+function handleStateChange()
+{   
+    if(xmlHttp.readyState == 4)
+    {
+		alert("4");
+        if (xmlHttp.status == 200)
+        {
+			alert("200");
+            var result = xmlHttp.responseText;
+            var json = eval("(" + result + ")");
+            //alert(json.title);//读取json数据
+            //alert(json.sex);
+            alert("ok");
+        }
+    }
+}
+</script>
+</head>
+<body>
+    <div>
+        <input type="button" value="AjaxTest" onclick="startRequest();" />
+    </div>
+</body>
+</html>
