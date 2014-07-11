@@ -1,0 +1,309 @@
+﻿body
+{
+    background-image: url("bg.jpg");
+    background-attachment: fixed;
+}
+#TitleBoard
+{
+    width: 100%;
+    height: 70px;
+    margin: 0 auto;
+    margin-top: 50px;
+    text-align: center;
+    padding-top: 17px;
+    position: relative;
+    opacity: 0.8;
+    background-color: #000000;
+}
+#Title
+{
+    font-family: 微软雅黑;
+    font-size: 35px;
+    color: white;
+}
+#Date
+{
+    margin-left: 15px;
+    font-family: Gulim;
+    font-size: 15px;
+    color: grey;
+}
+#ShowBoard
+{
+    width: 1200px;
+    height: 800px;
+    margin: 0 auto;
+    margin-top: 30px;
+    position: relative;
+    overflow: hidden;
+}
+#Board
+{
+    z-index: 100;
+	position: absolute;
+}
+#Board div
+{
+	position: absolute;
+}
+#left
+{
+    position: absolute;
+    cursor: pointer;
+    z-index: 100;
+}
+#right
+{
+    position: absolute;
+    cursor: pointer;
+    z-index: 100;
+}
+#leftArrow
+{
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    width: 80px;
+    z-index: 101;
+}
+#rightArrow
+{
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    width: 80px;
+    z-index: 101;
+}
+.switchOff
+{
+    position: absolute;
+    top: 10px;
+    width: 20px;
+    height: 30px;
+    background-color:grey;
+}
+.switchOn
+{
+    position: absolute;
+    top: 10px;
+    width: 20px;
+    height: 30px;
+    background-color:white;
+}
+.transparent
+{
+    opacity: 0.7;
+    z-index: 102;
+    background-color: #000000;
+    position: absolute;
+}
+.pageNum
+{
+    color: red;
+    font-size: 70px;
+    font-family: 华文新魏;
+}
+.pageTotal
+{
+    color: white;
+    font-size: 40px;
+    font-family: Arial;
+}
+.news
+{
+    color: white;
+    font-size: 22px;
+    font-family: 华文新魏;
+}
+#commentBoard
+{
+    width: 800px;
+    margin: 0 auto;
+    margin-top: 20px;
+    padding-top: 10px;
+    position: relative;
+    background-color: white;
+    opacity: 0.8;
+}
+.line
+{
+    width: 750px;
+    margin: 0 auto;
+    height: 1px;
+    position: relative;
+    background-color: grey;
+}
+#commentTitle
+{
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 5px;
+    font-size: 25px;
+    font-family: 微软雅黑;
+}
+#commentInput
+{
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 10px;
+    padding-top: 10px;
+    height: 100px;
+    background-color: grey;
+    margin-bottom: 20px;
+}
+#inputBox
+{
+    width: 84%;
+    height: 55px;
+    position: relative;
+    left: 15px;
+    border: 1px solid black;
+    border-radius: 5px;
+    font-size: 16px;
+    padding-left:5px;
+    padding-right: 5px;
+}
+.log
+{
+    font-size:15px;
+    cursor: pointer;
+    font-family: 黑体;
+    text-decoration: underline;
+    color: white;
+    position: relative;
+    top: 5px;
+}
+#submit
+{
+    width: 50px;
+    height: 25px;
+    position: relative;
+    top: 5px;
+    right: 9px;
+    border: 1px solid black;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: #3cc82c;
+    cursor: pointer;
+    font-family: 黑体;
+}
+.comment
+{
+    width: 640px;
+    margin-left: 80px;
+    margin-right: 80px;
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
+.clientImg
+{
+    position: absolute;
+    display: inline-block;
+    width: 60px;
+    height: 60px;
+    float: left;
+    margin-right: 10px;
+    cursor: pointer;
+}
+.clientCommentDiv
+{
+    margin-left: 75px;
+    width: 565px;
+    overflow: hidden;
+    border-bottom: 1px #808080 solid;
+    padding-bottom: 10px;
+}
+.username
+{
+    color: #63dd32;
+    font-size: 14px;
+    font-family: Tahoma;
+    font-weight: bold;
+    cursor: pointer;
+}
+.commentDate
+{
+    color: #a7aea5;
+    font-size: 14px;
+    font-family: Tahoma;
+    float:right;
+}
+.commentWord
+{
+    margin: 0px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 14px;
+    line-height: 20px;
+    word-wrap: break-word;
+    overflow: hidden;
+}
+.floor
+{
+    float:left;
+    font-size: 14px;
+    color: #797777;
+    font-family: Tahoma;
+}
+.response
+{
+    float: right;
+    font-size: 14px;
+    color: #3cc82c;
+    font-family: Tahoma;
+    font-weight: bold;
+    cursor: pointer;
+}
+.vline
+{
+    float: right;
+    font-size: 14px;
+    color: #797777;
+    font-family: Tahoma;
+    font-weight: bold;
+    padding-left:5px;
+    padding-right:5px;
+}
+#turnPageBoard
+{
+    height: 40px;
+    text-align: center;
+}
+.turnPage
+{
+    width: 70px;
+    height: 25px;
+    border: 1px solid black;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: white;
+    cursor: pointer;
+    font-family: 楷体;
+}
+.turnPage:hover
+{
+    width: 70px;
+    height: 25px;
+    border: 1px solid black;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: #5cfa1d;
+    cursor: pointer;
+    font-family: 楷体;
+}
+.pageList
+{
+    width: 80px;
+    height: 25px;
+    margin-left: 5px;
+    margin-right: 5px;
+    overflow:hidden;
+    border: 1px solid black;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: white;
+    cursor: pointer;
+    font-family: 楷体;
+}

@@ -1,9 +1,19 @@
 ﻿{
-	"num" : "6",
-	"link" : ["http://y2.ifengimg.com/b068cbc6f4474981/2014/0709/rdn_53bc723155437.jpg",
-		"http://y0.ifengimg.com/ea4db7da91601cb6/2014/0709/rdn_53bca7ac03359.jpg",
-		"http://y1.ifengimg.com/ea4db7da91601cb6/2014/0709/rdn_53bcb35ce5a3e.jpg",
-		"http://y0.ifengimg.com/ea4db7da91601cb6/2014/0709/rdn_53bca7ab03383.jpg",
-		"http://y0.ifengimg.com/ea4db7da91601cb6/2014/0709/rdn_53bca7a62c875.jpg",
-		"http://y0.ifengimg.com/ea4db7da91601cb6/2014/0709/rdn_53bca7ab9a55e.jpg"]
+    "num": 6,
+    "title": "巴西输球场外现骚乱 球迷焚烧国旗泄愤",
+    "date": "2014-07-09 06:58",
+    "link": ["http://y2.ifengimg.com/b068cbc6f4474981/2014/0709/rdn_53bc723155437.jpg",
+        "http://y0.ifengimg.com/ea4db7da91601cb6/2014/0709/rdn_53bca7ac03359.jpg",
+        "http://y1.ifengimg.com/ea4db7da91601cb6/2014/0709/rdn_53bcb35ce5a3e.jpg",
+        "http://y0.ifengimg.com/ea4db7da91601cb6/2014/0709/rdn_53bca7ab03383.jpg",
+        "http://y0.ifengimg.com/ea4db7da91601cb6/2014/0709/rdn_53bca7a62c875.jpg",
+        "http://y0.ifengimg.com/ea4db7da91601cb6/2014/0709/rdn_53bca7ab9a55e.jpg"],
+    "width": [1200, 1200, 1200, 1200, 1200, 1200],
+    "height": [800, 800, 676, 800, 800, 800, 800],
+    "news": ["综合巴西《圣保罗页报》和阿根廷Infobae网站报道，当地时间7月8日晚，当巴西国家队以1-7的分数被德国队淘汰后，巴西球迷难掩伤心神情以及不满情绪。比赛结束后，这场比赛的举办地圣保罗市两处公交车站内的20余辆大巴被点燃，以及一处商业建筑被烧，甚至有球迷焚烧巴西国旗泄愤。",
+        "据悉，当晚7点20分左右，圣保罗市市区一处公交车站内的20辆公交被点燃，19辆公交被完全烧毁，一辆公交车部分车体被烧。",
+        "随后，市区内一仓库发生起火事件，仓库外的集装箱被汽油点燃。晚间10点左右，城市内另一处公交站内也开始冒出浓烟，数量大巴被烧。",
+        "图为被烧毁的大巴车。",
+        "在场外激动的巴西球迷甚至出现了小规模的骚乱，部分球迷与巴西警方发生冲突。图为肇事球迷被制服。",
+        "巴西球迷对赛果表示强烈的不满。"]
 }

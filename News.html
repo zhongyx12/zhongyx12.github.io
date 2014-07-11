@@ -5,80 +5,57 @@
     <meta charset="utf-8" />
     <title>Football News</title>
     <script type="text/javascript" src="jquery-1.11.1.js"></script>
-    <style type="text/css">
-        body
-        {
-            background-image: url("bg.jpg");
-            background-attachment: fixed;
-        }
-        #ShowBoard
-        {
-            width: 1200px;
-            height: 800px;
-            margin: 0 auto;
-            margin-top: 40px;
-            position: relative;
-            overflow: hidden;
-        }
-        #ShowBoard ul
-        {
-            list-style-type: none;
-        }
-        #ShowBoard ul li div
-        {
-            margin: 0 auto;
-            width: 100%;
-            text-align:center;
-			display: block;
-			position: absolute;
-        }
-    </style>
+    <script type="text/javascript" src="jquery.tmpl.js"></script>
+    <script type="text/javascript" src="News.js"></script>
+    <link rel="stylesheet" type="text/css" href="News.css"/>
 </head>
-<body>
-    <input type="button" value = "Change" onclick = "produceImg()"/>
+<body onload="produceImg()" onkeydown="keyChangeImg(event)">
+    <div id ="TitleBoard"><span id = "Title"></span><span id = "Date"></span></div>
     <div id = "ShowBoard">
-        <ul id = "Board">
-            <!-- <li style = "display : list-item; opacity: 0.5;" >
-                <div><img src="http://y2.ifengimg.com/b068cbc6f4474981/2014/0709/rdn_53bc723155437.jpg"/></div>
-            </li>
-            <li style = "display : none; opacity: 0.8;">
-                <div><img src="http://y3.ifengimg.com/b068cbc6f4474981/2014/0709/rdn_53bc70fbcdae9.jpg"/></div>
-            </li> -->
-        </ul>
+        <div id = "Board">
+            <div id = "left" onclick ="changeImg(Number(window.localStorage.current)-1)">
+                <img id = "leftArrow" style = "display: none;" src = "left.png"/>
+            </div>
+            <div id = "right" onclick ="changeImg(window.localStorage.current+1)">
+                <img id = "rightArrow" style = "display: none;" src = "right.png"/>
+            </div>
+        </div>
     </div>
+    <div id = "commentBoard">
+        <div class = "line"></div>
+        <div id = "commentTitle">网友评论</div>
+        <div id = "commentInput">
+            <img style= "height: 59px; position: relative; left: 12px; top:1px; vertical-align: top;" src = "clientImg/none.png"/>
+            <textarea id = "inputBox" cols="40" rows="4"></textarea>
+            <div style ="height: 30px; text-align:right"><a class = "log" style = "right: 40px">注册</a><a class = "log" style = "right: 28px">登陆</a><button id = "submit">发布</button></div>
+        </div>
+        <div class = "line"></div>
+        <ul id = "commentList" style="list-style:none; padding-left:0px; overflow:hidden">
+            
+        </ul>
+        <div id = "turnPageBoard">
+            <button id = "prepage" class = "turnPage" onclick ="changeCom(Number(window.localStorage.curPage)-1)">&lt;上一页</button>
+            <select id = "pageList" class = "pageList" onchange = "changeCom(this.value)">
+                
+            </select>
+            <button id = "nextpage" class = "turnPage" onclick ="changeCom(Number(window.localStorage.curPage)+1)">下一页&gt;</button>
+        </div>
+    </div>
+<script type="text/x-jquery-tmpl" id="commentTemplate">
+    <li class="comment">
+        <img class="clientImg" src="${img}" />
+        <div class="clientCommentDiv">
+            <span class="username">${username}</span>
+            <span class="commentDate">${date}</span>
+            <p class="commentWord">${comment}</p>
+            <div>
+                <span class="floor">${floor}楼</span>
+                <span class="response">回复</span>
+                <span class="vline">|</span>
+                <span class="response">顶</span>
+            </div>
+        </div>
+    </li>
+</script>  
 </body>
-<script type="text/javascript">
-    var url = "NewsImg.json"
-
-    function processData(obj)
-    {
-        var i;
-        for (i = 0; i < obj.num; i++)
-        {
-            $("#Board").append('<li style = "display : list-item;" ><div><img /></div></li>');
-            $("#Board").children().eq(i).children().children().attr("src", obj.link[i]);
-        }
-    }
-
-    function handler() {
-        if (this.readyState == this.DONE) {
-            if (this.status == 200) {
-                try {
-                    processData(JSON.parse(this.responseText));
-                } catch (ex) {
-                    console.log(ex.message);
-                }
-            }
-        }
-    }
-
-    function produceImg()
-    {
-        var client = new XMLHttpRequest();
-        client.onreadystatechange = handler;
-        client.open('GET', url);
-        client.send();
-    }
-</script>
-
 </html>
