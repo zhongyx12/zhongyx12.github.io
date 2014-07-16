@@ -3,7 +3,7 @@ function mapPos()
     game.initPos = [];
     game.initPos[0] = { x: 20, y: 500 };
     game.initPos[1] = { x: 20, y: 500 };
-    game.initPos[2] = { x: 20, y: 430 };
+    game.initPos[2] = { x: 0, y: 430 };
     game.initPos[3] = { x: 484, y: 284 };
 }
 
@@ -92,6 +92,10 @@ function map0(index) {
     game.sprites[index].push(createSpikeUp(175, 308));//突然上升的刺
     game.sprites[index][game.sprites[index].length - 1].handleInput = function (deltaTime) {
         if (game.player.y >= 220 && game.player.y <= 320 && game.player.x >= 155 && game.player.x <= 190) {
+            if (this.played == undefined) {
+                document.getElementById("spike").play();
+                this.played = 1;
+            }
             this.minY = -50;
             this.speedY = -400 / 1000;
         }
@@ -100,6 +104,10 @@ function map0(index) {
     game.sprites[index].push(createSpikeUp(112, 308));//突然右移的刺
     game.sprites[index][game.sprites[index].length - 1].handleInput = function (deltaTime) {
         if (game.player.y >= 220 && game.player.y <= 340 && game.player.x >= 120 && game.player.x <= 170) {
+            if (this.played == undefined) {
+                document.getElementById("spike").play();
+                this.played = 1;
+            }
             this.maxX = 170;
             this.speedX = 400 / 1000;
         }
@@ -107,6 +115,10 @@ function map0(index) {
     game.sprites[index].push(createSpikeUp(98, 163));//突然上移的刺
     game.sprites[index][game.sprites[index].length - 1].handleInput = function (deltaTime) {
         if (game.player.y >= -50 && game.player.y <= 210 && game.player.x >= 75 && game.player.x <= 125) {
+            if (this.played == undefined) {
+                document.getElementById("spike").play();
+                this.played = 1;
+            }
             this.minY = -50;
             this.speedY = -400 / 1000;
         }
@@ -131,6 +143,10 @@ function map0(index) {
     game.sprites[index].push(createSpikeUp(750, 538));//突然右移的刺2
     game.sprites[index][game.sprites[index].length - 1].handleInput = function (deltaTime) {
         if (game.player.y >= 480 && game.player.y <= 540 && game.player.x >= 730 && game.player.x <= 785) {
+            if (this.played == undefined) {
+                document.getElementById("spike").play();
+                this.played = 1;
+            }
             this.maxX = 780;
             this.speedX = 400 / 1000;
         }
@@ -140,20 +156,32 @@ function map0(index) {
     game.sprites[index].push(createSpikeRight(810, 448));//会突然右移的刺组
     game.sprites[index][game.sprites[index].length - 1].handleInput = function (deltaTime) {
         if (game.player.y >= 440 && game.player.y <= 470 && game.player.x >= 810 && game.player.x <= 900) {
+            if (this.played == undefined) {
+                document.getElementById("spike").play();
+                this.played = 1;
+            }
             this.maxX = 1050;
-            this.speedX = 600 / 1000;
+            this.speedX = 400 / 1000;
         }
     };
     game.sprites[index].push(createSpikeRight(810, 416));//会突然右移的刺组
     game.sprites[index][game.sprites[index].length - 1].handleInput = function (deltaTime) {
         if (game.player.y >= 440 && game.player.y <= 470 && game.player.x >= 810 && game.player.x <= 900) {
+            if (this.played == undefined) {
+                document.getElementById("spike").play();
+                this.played = 1;
+            }
             this.maxX = 1050;
-            this.speedX = 600 / 1000;
+            this.speedX = 400 / 1000;
         }
     };
     game.sprites[index].push(createSpikeDown(930, 375));//会突然下降的刺
     game.sprites[index][game.sprites[index].length - 1].handleInput = function (deltaTime) {
         if (game.player.y >= 380 && game.player.y <= 570 && game.player.x >= 915 && game.player.x <= 945) {
+            if (this.played == undefined) {
+                document.getElementById("spike").play();
+                this.played = 1;
+            }
             this.maxY = 1050;
             this.speedY = 700 / 1000;
         }
@@ -176,6 +204,10 @@ function map0(index) {
     game.sprites[index][game.sprites[index].length - 1].defaultAnimId = "hidden";
     game.sprites[index][game.sprites[index].length - 1].handleInput = function (deltaTime) {
         if (game.player.y >= 280 && game.player.y <= 440 && game.player.x >= 320 && game.player.x <= 350 && this.currentAnim === this.anims["hidden"]) {
+            if (this.played == undefined) {
+                document.getElementById("cherry").play();
+                this.played = 1;
+            }
             this.setAnim("damage");
             this.minY = -50;
             this.speedY = -600 / 1000;
@@ -183,9 +215,22 @@ function map0(index) {
     };
     //坑爹的暴漫云
     game.sprites[index].push(createCloud(820, 85));
+    game.sprites[index][game.sprites[index].length - 1].handleInput = function () {
+        if (this.collideWidthOther(game.player) && this.currentAnim === this.anims["normal"]) {
+            if (this.played == undefined) {
+                document.getElementById("cherry").play();
+                this.played = 1;
+            }
+            this.setAnim("damage");
+        }
+    };
     //突然出现的刺
     game.sprites[index][0].handleInput = function (deltaTime) {
         if (game.player.y >= 385 && game.player.y <= 500 && game.player.x >= 148 && game.player.x <= 166) {
+            if (this.played == undefined) {
+                document.getElementById("spike").play();
+                this.played = 1;
+            }
             var t = createSpikeDown(165, 405);
             game.sprites[game.mapIndex].push(t);
             t.init();
@@ -194,6 +239,10 @@ function map0(index) {
     //突然出现的平台
     game.sprites[index][1].handleInput = function (deltaTime) {
         if (game.player.y >= 225 && game.player.y <= 265 && game.player.x >= 345 && game.player.x <= 425) {
+            if (this.played == undefined) {
+                document.getElementById("cherry").play();
+                this.played = 1;
+            }
             var t = createPlatform(364, 210, 61, 35);
             game.sprites[game.mapIndex].push(t);
             t.init();
@@ -211,6 +260,10 @@ function map1(index) {
     game.sprites[index][j++] = createPlatform(550, 570, 150, 30);//会下陷的平台
     game.sprites[index][game.sprites[index].length - 1].handleInput = function (deltaTime) {
         if (game.player.y >= 538 && game.player.y <= 550 && game.player.x >= 550 && game.player.x <= 655) {
+            if (this.played == undefined) {
+                document.getElementById("cherry").play();
+                this.played = 1;
+            }
             this.maxY = 1050;
             this.speedY = 500 / 1000;
         }
@@ -241,6 +294,10 @@ function map1(index) {
                 if (game.sprites[game.mapIndex][i] == this) {
                     break;
                 }
+            if (this.played == undefined) {
+                document.getElementById("spike").play();
+                this.played = 1;
+            }
             var t = createSpikeLeft(628, 330);
             game.sprites[game.mapIndex][i] = t;
             t.init();
@@ -254,6 +311,10 @@ function map1(index) {
     temp = j - 1;
     game.sprites[index][temp].handleInput = function (deltaTime) {
         if (game.player.x >= 700 && game.player.x <= 745 && game.player.y <= 223) {
+            if (this.played == undefined) {
+                document.getElementById("spike").play();
+                this.played = 1;
+            }
             var t = createSpikeUp(725, 253);
             game.sprites[game.mapIndex].push(t);
             t.init();
@@ -297,6 +358,10 @@ function map1(index) {
     game.sprites[index][j++] = createSpikeDown(200, 375);
     game.sprites[index][game.sprites[index].length - 1].handleInput = function (deltaTime) {
         if (game.player.y >= 400 && game.player.y <= 570 && game.player.x >= 190 && game.player.x <= 210) {
+            if (this.played == undefined) {
+                document.getElementById("spike").play();
+                this.played = 1;
+            }
             this.maxY = 1050;
             this.speedY = 900 / 1000;
         }
@@ -304,6 +369,10 @@ function map1(index) {
     game.sprites[index][j++] = createSpikeDown(232, 375);
     game.sprites[index][game.sprites[index].length - 1].handleInput = function (deltaTime) {
         if (game.player.y >= 400 && game.player.y <= 570 && game.player.x >= 222 && game.player.x <= 242) {
+            if (this.played == undefined) {
+                document.getElementById("spike").play();
+                this.played = 1;
+            }
             this.maxY = 1050;
             this.speedY = 900 / 1000;
         }
@@ -311,6 +380,10 @@ function map1(index) {
     game.sprites[index][j++] = createSpikeDown(264, 375);
     game.sprites[index][game.sprites[index].length - 1].handleInput = function (deltaTime) {
         if (game.player.y >= 400 && game.player.y <= 570 && game.player.x >= 254 && game.player.x <= 274) {
+            if (this.played == undefined) {
+                document.getElementById("spike").play();
+                this.played = 1;
+            }
             this.maxY = 1050;
             this.speedY = 900 / 1000;
         }
@@ -318,10 +391,14 @@ function map1(index) {
     game.sprites[index][j++] = createSpikeDown(296, 375);
     game.sprites[index][game.sprites[index].length - 1].handleInput = function (deltaTime) {
         if (game.player.y >= 400 && game.player.y <= 570 && game.player.x >= 286 && game.player.x <= 308) {
+            if (this.played == undefined) {
+                document.getElementById("spike").play();
+                this.played = 1;
+            }
             this.maxY = 1050;
             this.minX = -50;
             this.speedY = 900 / 1000;
-            this.speedX = -100 / 1000;
+            this.speedX = -160 / 1000;
         }
     };
     game.sprites[index][j++] = createSpikeDown(328, 375);
@@ -331,8 +408,13 @@ function map1(index) {
     game.sprites[index][j++] = createSpikeDown(840, 440);//玩家经过会掉的刺
     temp = j - 1;
     game.sprites[index][temp].handleInput = function (deltaTime) {
-        if (game.player.x - 845 >= -20 && game.player.y >= 475)
+        if (game.player.x - 845 >= -20 && game.player.y >= 475) {
+            if (this.played == undefined) {
+                document.getElementById("spike").play();
+                this.played = 1;
+            }
             this.acceY = 5.0 / 1000;
+        }
     }
 
     game.sprites[index][j++] = createSpikeRight(165, 483);
@@ -349,6 +431,10 @@ function map1(index) {
 
     game.sprites[index][0].handleInput = function (deltaTime) {
         if (game.player.y >= 528 && game.player.y <= 570 && game.player.x >= 318 && game.player.x <= 338) {
+            if (this.played == undefined) {
+                document.getElementById("spike").play();
+                this.played = 1;
+            }
             var t = createSpikeUp(328, 538);
             game.sprites[game.mapIndex].push(t);
             t.init();
@@ -367,6 +453,10 @@ function map1(index) {
     game.sprites[index].push(createCherry(635, 480));
     game.sprites[index][game.sprites[index].length - 1].handleInput = function (deltaTime) {
         if (game.player.y > 500 && game.player.y <= 570 && game.player.x >= 420 && game.player.x <= 580) {
+            if (this.played == undefined) {
+                document.getElementById("cherry").play();
+                this.played = 1;
+            }
             this.maxY = 1050;
             this.minX = -50;
             this.speedY = 250 / 1000;
@@ -376,6 +466,10 @@ function map1(index) {
     game.sprites[index].push(createCherry(590, 455));
     game.sprites[index][game.sprites[index].length - 1].handleInput = function (deltaTime) {
         if (game.player.y >= 400 && game.player.y <= 500 && game.player.x >= 390 && game.player.x <= 580) {
+            if (this.played == undefined) {
+                document.getElementById("cherry").play();
+                this.played = 1;
+            }
             this.maxY = 1050;
             this.minX = -50;
             this.speedY = 200 / 1000;
@@ -384,9 +478,22 @@ function map1(index) {
     };
 
     game.sprites[index].push(createButton(845, 305)); // 过关必触发的机关
+    game.sprites[index][game.sprites[index].length - 1].handleInput = function () {
+        if (window.localStorage.buttonFlag == "0" && this.collideWidthOther(game.player)) {
+            if (this.played == undefined) {
+                document.getElementById("change").play();
+                this.played = 1;
+            }
+            window.localStorage.buttonFlag = 1;
+        }
+    };
     game.sprites[index].push(createSpikeRight(164, 320)); // 过关必消的刺
     game.sprites[index][game.sprites[index].length - 1].handleInput = function (deltaTime) {
         if (window.localStorage.buttonFlag == "1") {
+            if (this.played == undefined) {
+                document.getElementById("spike").play();
+                this.played = 1;
+            }
             this.maxX = 1050;
             this.speedX = 500 / 1000;
         }
@@ -406,11 +513,16 @@ function map2(index) {
     temp = j - 1;
     game.sprites[index][temp].handleInput = function (deltaTime) {
         if (game.player.x >= 340 && game.player.x <= 385 && game.player.y <= 370 && game.player.y >= 305 && game.player.speedX > 0) {
+            if (this.played == undefined) {
+                document.getElementById("cherry").play();
+                this.played = 1;
+            }
             var t = createPlatform(375, 305, 10, 115);//隐藏的挡板
             game.sprites[game.mapIndex].push(t);
             t.init();
         }
-    }
+    };
+    
 
     game.sprites[index][j++] = createPlatform(100, 250, 30, 30);
     game.sprites[index][j++] = createPlatform(220, 310, 30, 30);
@@ -421,6 +533,10 @@ function map2(index) {
     temp = j - 1;
     game.sprites[index][temp].handleInput = function (deltaTime) {
         if (game.player.x >= 222 && game.player.x <= 383 && game.player.y <= 188 && game.player.y >= 155) {
+            if (this.played == undefined) {
+                document.getElementById("spike").play();
+                this.played = 1;
+            }
             this.speedX = 300 / 1000;
             this.maxX = 355;
         }
@@ -436,6 +552,10 @@ function map2(index) {
     temp = j - 1;
     game.sprites[index][temp].handleInput = function (deltaTime) {
         if (game.player.x >= 550 && game.player.x <= 610 && game.player.y <= 288 && game.player.y >= 285) {
+            if (this.played == undefined) {
+                document.getElementById("spike").play();
+                this.played = 1;
+            }
             var t = createSpikeUp(575, 310);//隐藏刺3
             game.sprites[game.mapIndex].push(t);
             t.init();
@@ -448,6 +568,10 @@ function map2(index) {
     temp = j - 1;
     game.sprites[index][temp].handleInput = function (deltaTime) {
         if (game.player.x >= 710 && game.player.x <= 748 && game.player.y <= 288 && game.player.y >= 285) {
+            if (this.played == undefined) {
+                document.getElementById("spike").play();
+                this.played = 1;
+            }
             var t = createSpikeUp(714, 288);//突然出现在夹缝的刺
             game.sprites[game.mapIndex].push(t);
             t.init();
@@ -459,7 +583,11 @@ function map2(index) {
     game.sprites[index][j++] = createPlatform(545, 220, 30, 65);//隐藏刺1的块
     temp = j - 1;
     game.sprites[index][temp].handleInput = function (deltaTime) {
-        if (game.player.x >= 513 && game.player.x <= 575 && game.player.y <= 188 && game.player.y >= 100) {
+        if (game.player.x >= 513 && game.player.x <= 575 && game.player.y <= 188 && game.player.y >= 150) {
+            if (this.played == undefined) {
+                document.getElementById("spike").play();
+                this.played = 1;
+            }
             var t = createSpikeUp(544, 188);//隐藏刺1
             game.sprites[game.mapIndex].push(t);
             t.init();
@@ -472,8 +600,12 @@ function map2(index) {
     temp = j - 1;
     game.sprites[index][temp].handleInput = function (deltaTime) {
         if (game.player.x >= 600 && game.player.x <= 750 && game.player.y <= 223 && game.player.y >= 140 && this.flag == undefined) {
+            if (this.played == undefined) {
+                document.getElementById("spike").play();
+                this.played = 1;
+            }
             var t = createSpikeRight(545, 220);
-            t.speedX = 100 / 1000;
+            t.speedX = 300 / 1000;
             game.sprites[game.mapIndex].push(t);
             t.init();
             this.flag = true;
@@ -488,6 +620,10 @@ function map2(index) {
         var x0 = this.x;
         var y0 = this.y;
         if (game.player.x >= x0 && game.player.x <= x0 + 33 && game.player.y == y0 - 32 && !KeyState[Key.A] && !KeyState[Key.W] && !KeyState[Key.D]) {
+            if (this.played == undefined) {
+                document.getElementById("cherry").play();
+                this.played = 1;
+            }
             game.player.speedX = 200 / 1000;
             game.player.maxX = 999;
             this.speedX = 200 / 1000;
@@ -499,6 +635,10 @@ function map2(index) {
     temp = j - 1;
     game.sprites[index][temp].handleInput = function (deltaTime) {
         if (game.player.x >= 222 && game.player.x <= 383 && game.player.y <= 188 && game.player.y >= 155) {
+            if (this.played == undefined) {
+                document.getElementById("spike").play();
+                this.played = 1;
+            }
             this.speedX = 300 / 1000;
             this.maxX = 385;
         }
@@ -508,6 +648,10 @@ function map2(index) {
     temp = j - 1;
     game.sprites[index][temp].handleInput = function (deltaTime) {
         if (game.player.x >= 222 && game.player.x <= 383 && game.player.y <= 188 && game.player.y >= 155) {
+            if (this.played == undefined) {
+                document.getElementById("spike").play();
+                this.played = 1;
+            }
             this.speedX = 300 / 1000;
             this.maxX = 385;
         }
@@ -519,7 +663,10 @@ function map2(index) {
     temp = j - 1;
     game.sprites[index][temp].handleInput = function (deltaTime) {
         if (game.player.x >= 760 && game.player.x <= 810 && game.player.y <= 155) {
-            console.log(game.player.x);
+            if (this.played == undefined) {
+                document.getElementById("spike").play();
+                this.played = 1;
+            }
             this.speedY = -600 / 1000;
         }
     }
@@ -532,12 +679,12 @@ function map2(index) {
     game.sprites[index][j++] = createSpikeUp(385, 503);
     game.sprites[index][j++] = createSpikeUp(420, 503);
     game.sprites[index][j++] = createSpikeUp(452, 503);
-    game.sprites[index][j++] = createSpikeUp(645, 503);
-    game.sprites[index][j++] = createSpikeUp(610, 503);
+    game.sprites[index][j++] = createSpikeUp(651, 503);
+    game.sprites[index][j++] = createSpikeUp(613, 503);
     game.sprites[index][j++] = createSpikeUp(575, 503);
-    game.sprites[index][j++] = createSpikeUp(715, 503);
-    game.sprites[index][j++] = createSpikeUp(750, 503);
-    game.sprites[index][j++] = createSpikeUp(785, 503);
+    game.sprites[index][j++] = createSpikeUp(689, 503);
+    game.sprites[index][j++] = createSpikeUp(728, 503);
+    game.sprites[index][j++] = createSpikeUp(767, 503);
     game.sprites[index][j++] = createSpikeUp(0, 118);
     game.sprites[index][j++] = createSpikeUp(968, 118);
     game.sprites[index][j++] = createSpikeLeft(413, 255);
@@ -546,12 +693,82 @@ function map2(index) {
     temp = j - 1;
     game.sprites[index][temp].handleInput = function (deltaTime) {
         if (game.player.x >= 10 && game.player.x <= 50 && game.player.y <= 438 && game.player.y >= 405) {
-            this.acceY = 1.0 / 1000;
+            if (this.played == undefined) {
+                document.getElementById("spike").play();
+                this.played = 1;
+            }
+            this.acceY = 5.0 / 1000;
             this.maxY = 450;
         }
+    };
+
+    //会突然出现并下降的苹果
+    game.sprites[index].push(createCherry(100, 280));
+    game.sprites[index][game.sprites[index].length - 1].defaultAnimId = "hidden";
+    game.sprites[index][game.sprites[index].length - 1].handleInput = function (deltaTime) {
+        if (game.player.y >= 260 && game.player.y <= 470 && game.player.x >= 90 && game.player.x <= 110 && this.currentAnim === this.anims["hidden"]) {
+            if (this.played == undefined) {
+                document.getElementById("cherry").play();
+                this.played = 1;
+            }
+            this.setAnim("damage");
+            this.maxY = 1050;
+            this.speedY = 1000 / 1000;
+        }
+    };
+    //会突然出现并左移的苹果
+    game.sprites[index].push(createCherry(300, 440));
+    game.sprites[index][game.sprites[index].length - 1].defaultAnimId = "hidden";
+    game.sprites[index][game.sprites[index].length - 1].handleInput = function (deltaTime) {
+        if (game.player.y >= 400 && game.player.y <= 470 && game.player.x >= 220 && game.player.x <= 310 && this.currentAnim === this.anims["hidden"]) {
+            if (this.played == undefined) {
+                document.getElementById("cherry").play();
+                this.played = 1;
+            }
+            this.setAnim("damage");
+            this.minX = -50;
+            this.speedX = -190 / 1000;
+        }
+    };
+    //会突然出现的刺
+    game.sprites[index][0].handleInput = function (deltaTime) {
+        if (game.player.x >= 120 && game.player.x <= 170 && game.player.y <= 425 && game.player.y >= 385) {
+            if (this.played == undefined) {
+                document.getElementById("spike").play();
+                this.played = 1;
+            }
+            var t = createSpikeDown(145, 405);
+            game.sprites[game.mapIndex].push(t);
+            t.init();
+        }
     }
-    game.sprites[index][j++] = createWarp(960, 500);
-    game.sprites[index][j++] = createSave(437,170);
+    //会突然出现的刺
+    game.sprites[index][1].handleInput = function (deltaTime) {
+        if (game.player.x >= 170 && game.player.x <= 210 && game.player.y <= 400 && game.player.y >= 310) {
+            if (this.played == undefined) {
+                document.getElementById("spike").play();
+                this.played = 1;
+            }
+            var t = createSpikeRight(189, 370);
+            game.sprites[game.mapIndex].push(t);
+            t.init();
+        }
+    }
+    
+    game.sprites[index][2].handleInput = function (deltaTime) {
+        if (game.player.x >= 590 && game.player.x <= 680 && game.player.y <= 400 && game.player.y >= 310) {
+            if (this.played == undefined) {
+                document.getElementById("spike").play();
+                this.played = 1;
+            }
+            var t = createPlatform(640, 360, 30, 40);
+            game.sprites[game.mapIndex].push(t);
+            t.init();
+        }
+    }
+
+    game.sprites[index].push(createWarp(960, 500));
+    game.sprites[index].push(createSave(437, 170));
 }
 
 function map3(index)

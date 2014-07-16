@@ -227,12 +227,6 @@ function createButton(a, b) {
             })
         },
 
-        handleInput: function () {
-            if (window.localStorage.buttonFlag == "0" && this.collideWidthOther(game.player)) {
-                window.localStorage.buttonFlag = 1;
-            }
-        },
-
         collideWidthOther: function (sprite2) {
             if (sprite2.x >= this.x - 16 && sprite2.x <= this.x + 16 && sprite2.y >= this.y - 16 && sprite2.y <= this.y + 16)
                 return true;

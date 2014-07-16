@@ -189,11 +189,6 @@ function createCloud(a, b) {
         minY: -32,
         maxY: 600,
 
-        handleInput: function () {
-            if (this.collideWidthOther(game.player) && this.currentAnim === this.anims["normal"])
-                this.setAnim("damage");
-        },
-
         defaultAnimId: "normal",
         anims: {
             "normal": new Animation({

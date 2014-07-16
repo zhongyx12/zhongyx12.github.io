@@ -62,7 +62,7 @@ Game.prototype={
 	opening : function() 
 	{
 	    var Me = this;
-	    if (window.localStorage.mapIndex == undefined || window.localStorage.playerX == undefined || window.localStorage.playerY == undefined || window.localStorage.buttonFlag == undefined) {
+	    if (window.localStorage.mapIndex == undefined || window.localStorage.playerX == undefined || window.localStorage.playerY == undefined || window.localStorage.buttonFlag == undefined || window.localStorage.life == undefined) {
 	        this.gc.drawImage(ImgCache["opening1"], 0, 0);
 	        this.newGame = 1;
 	    }
@@ -85,6 +85,7 @@ Game.prototype={
 	                window.localStorage.playerX = game.initPos[0].x;
 	                window.localStorage.playerY = game.initPos[0].y;
 	                window.localStorage.buttonFlag = 0;
+	                window.localStorage.life = 3;
 	                game.restart(0, game.initPos[0].x, game.initPos[0].y);
 	            }
 	            else {
@@ -157,6 +158,7 @@ Game.prototype={
 	        for (var i = 0; i < this.deaths.length; i++)
 	            this.deaths[i].initXY();
 	        this.playerDied = true;
+	        window.localStorage.life = (Number(window.localStorage.life) - 1);
 	    }
 	},
 
@@ -205,6 +207,7 @@ Game.prototype={
 	            document.getElementById("death").play();
 	            for (var i = 0; i < this.deaths.length; i++)
 	                this.deaths[i].initXY();
+	            window.localStorage.life = (Number(window.localStorage.life) - 1);
 	            this.playerDied = true;
 	        }
 	    }
@@ -308,11 +311,10 @@ Game.prototype={
 	    //使用背景覆盖的方式 清空之前绘制的图片
 	    if (this.playerDied == true)
 	        this.gc.drawImage(ImgCache["bg_white"], 0, 0);
-	    else {
+	    else
 	        this.gc.drawImage(ImgCache["bg"], 0, 0);
-	        if (this.mapIndex == 2)
-	            puzzle(this.gc);
-	    }
+	    if (this.mapIndex == 2)
+	        puzzle(this.gc);
 	},
 
 	mask: function () {
@@ -330,6 +332,13 @@ Game.prototype={
 		}
 		if (this.playerDied == false)
 		    this.player.draw(this.gc);
+		this.gc.beginPath();
+		this.gc.font = "bold 24px arial"
+		if (Number(window.localStorage.life) > 0)
+		    this.gc.fillStyle = '#0f0';
+        else
+		    this.gc.fillStyle = '#f00';
+		this.gc.fillText('Life: ' + window.localStorage.life, 12, 22);
 	},
 	handleInput: function (deltaTime) {
 	    if (this.playerDied == false && this.player.handleInput)
