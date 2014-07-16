@@ -1,0 +1,208 @@
+﻿<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="Pragma" content="no-cache" />
+<meta http-equiv="Expires" content="-1" />
+<meta http-equiv="Cache-Control" content="no-cache" />
+
+
+<title>I wanna be a programmer!</title>
+
+<script type="text/javascript" src="./Base.js"></script>
+<script type="text/javascript" src="./Animation.js"></script>
+<script type="text/javascript" src="./Sprite.js"></script>
+<script type="text/javascript" src="./Game.js"></script>
+
+<script type="text/javascript" src="./player.js"></script>
+<script type="text/javascript" src="./platform.js"></script>
+<script type="text/javascript" src="./spike.js"></script>
+<script type="text/javascript" src="./JudgeDeath.js"></script>
+<script type="text/javascript" src="./death.js"></script>
+<script type="text/javascript" src="./MapInfo.js"></script>
+
+
+<style type="text/css">
+body {
+	border:none 0px;
+	margin:0px;
+	padding:10px;
+	font-size : 16px;
+	background-color : #f3f3f3;
+}
+
+canvas {
+	border : 1px solid blue; 
+}
+</style>
+
+
+<script type="text/javascript">
+// 页面初始化函数
+function init(){
+	
+	
+	//加载图片,并存入全局变量 ImgCache, 
+	// 加载完成后,调用startDemo
+	ImgCache=loadImage( [ 
+			{ 	id : "player",
+				url : "./res/player.png"
+			},
+			/*{ 	id : "enemy",
+				url : "./res/enemy.png"
+			},*/
+			{ 	id : "bg",
+				url : "./res/bg.png"
+			},
+            {
+                id: "platform",
+                url: "./res/platform.png"
+            },
+            {
+                id: "spikeUp",
+                url: "./res/SpikeUp.png"
+            },
+            {
+                id: "spikeDown",
+                url: "./res/SpikeDown.png"
+            },
+            {
+                id: "spikeLeft",
+                url: "./res/SpikeLeft.png"
+            },
+            {
+                id: "spikeRight",
+                url: "./res/SpikeRight.png"
+            },
+            {
+                id: "blood",
+                url: "./res/blood.png"
+            },
+            {
+                id: "head",
+                url: "./res/head.png"
+            },
+            {
+                id: "handL",
+                url: "./res/handL.png"
+            },
+            {
+                id: "handR",
+                url: "./res/handR.png"
+            },
+            {
+                id: "footL",
+                url: "./res/footL.png"
+            },
+            {
+                id: "footR",
+                url: "./res/footR.png"
+            },
+            {
+                id: "blood_mask",
+                url: "./res/blood_mask.png"
+            },
+            {
+                id: "bg_white",
+                url: "./res/bg_white.png"
+            },
+            {
+                id: "GAMEOVER",
+                url: "./res/GAMEOVER.png"
+            },
+            {
+                id: "Save",
+                url: "./res/Save.png"
+            },
+            {
+                id: "cherry",
+                url: "./res/Cherry.png"
+            },
+            {
+                id: "warp",
+                url: "./res/Warp.png"
+            },
+            {
+                id: "opening1",
+                url: "./res/opening1.png"
+            },
+            {
+                id: "opening2",
+                url: "./res/opening2.png"
+            },
+            {
+                id: "win",
+                url: "./res/win.png"
+            },
+            {
+                id: "cloud",
+                url: "./res/cloud.png"
+            },
+            {
+                id: "tree",
+                url: "./res/tree.png"
+            },
+            {
+                id: "button",
+                url: "./res/button.png"
+            }
+		], 
+		startDemo );
+
+}
+
+
+//定义游戏所用 按键的keyCode的常量
+var Key={
+	Left: 37,	
+	Up: 38,
+	Right: 39,
+	Down: 40,
+    Shift: 16,
+    R: 82
+}
+
+
+
+//声明全局game对象
+var game;
+
+// Demo的启动函数
+function startDemo(){
+
+	//创建game对象
+	game=new Game({
+		FPS : 50,
+		width : 1000,
+		height : 600,
+		sprites: [],
+		mapIndex: 0,
+        mapNum: 4,
+		deaths: [],
+		playerDied: false
+	});
+
+	game.gameStart();
+
+}
+
+
+	
+</script>
+
+</head> 
+<body onload="init()"> 
+<audio id="death" src="./res/death.wav"></audio>
+<audio id="bgsound1" src="./res/bgsound1.mp3" loop = "loop"></audio>
+<audio id="bgsound2" src="./res/bgsound2.mp3" loop = "loop"></audio>
+<audio id="bgsound3" src="./res/bgsound3.mp3"></audio>
+<audio id="bgsound4" src="./res/bgsound4.mp3" loop = "loop"></audio>
+<audio id="change" src="./res/change.wav"></audio>
+<audio id="cherry" src="./res/cherry.wav"></audio>
+<audio id="jump" src="./res/jump.wav"></audio>
+<audio id="dbjump" src="./res/dbjump.wav"></audio>
+<audio id="shoot" src="./res/shoot.wav"></audio>
+
+
+</body>
+</html>
