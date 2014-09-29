@@ -1,0 +1,9 @@
+﻿input.inputText {
+    background-color : rgb(175,175,175);
+    color : black;
+    width : 100px;
+}
+
+input.inputText::-webkit-input-placeholder {
+    color : white;
+}

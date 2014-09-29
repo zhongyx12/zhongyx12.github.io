@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Game of Life</title>
+
+    <link rel="stylesheet" type="text/css" href="bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="bootstrap-responsive.min.css" />
+    <link rel="stylesheet" type="text/css" href="myDefine.css" />
+    <script type="text/javascript" src="Core.js"></script>
+    <script type="text/javascript" src="Show.js"></script>
+</head>
+<body style="background-image:url(bg.jpg)" onload="init()">
+    <h1 style="text-align: center; margin-top: 30px">Game of life</h1>
+    <div style="text-align: center; margin:20px">
+        <input type="text" id="length" class="search-query span2 inputText" placeholder="横向细胞数目" onblur ="inputLost('length');" onfocus ="inputFocus('length');"/>
+        <input type="text" id="width" class="search-query span2 inputText" placeholder="纵向细胞数目" onblur ="inputLost('width');" onfocus ="inputFocus('width');"/>
+        <input type="submit" id="modify_arraySize" value="改变阵列尺寸" class="btn btn-primary" style="margin-right:20px" onclick="modify_arraySize();" />
+        <input type="text" id="size" class="search-query span2 inputText" placeholder="细胞大小" onblur ="inputLost('size');" onfocus ="inputFocus('size');"/>
+        <input type="submit" id="modify_cellSize" value="改变细胞大小" class="btn btn-primary" style="margin-right:0px" onclick="modify_cellSize();" />
+        <input type="submit" id="plus_cellSize" value="+" class="btn btn-primary" style="margin-right:0px" onclick="justify_cellSize(1);" />
+        <input type="submit" id="minus_cellSize" value="-" class="btn btn-primary" style="margin-right:20px" onclick="justify_cellSize(-1);" />
+        <input type="text" id="fps" class="search-query span2 inputText" placeholder="帧率" onblur ="inputLost('fps');" onfocus ="inputFocus('fps');"/>
+        <input type="submit" id="modify_fps" value="改变帧率" class="btn btn-primary" onclick="modify_fps();" />
+    </div>
+    <div style="text-align: center">
+        <span style="font-weight:bold; font-size: 1.3em; margin-right: 20px">横向细胞数目: <span id="showLen">200</span></span>
+        <span style="font-weight:bold; font-size: 1.3em; margin-right: 20px">纵向细胞数目: <span id="showWid">200</span></span>
+        <span style="font-weight:bold; font-size: 1.3em; margin-right: 20px">细胞大小: <span id="showSize">2</span></span>
+        <span style="font-weight:bold; font-size: 1.3em; margin-right: 50px">FPS: <span id="showFPS">20</span></span>
+        <input type="submit" id="start_pause" value="开始" class="btn btn-primary" style="margin-right:10px" onclick="start_pause();" />
+        <input type="submit" id="random" value="随机初始化" class="btn btn-primary" onclick="random();" />
+    </div>
+    <div style="text-align: center; margin:30px">
+    <canvas width="200" height="200" id="MyCanvas" style="width:400px; height:400px"></canvas>
+    </div>
+</body>
+</html>
